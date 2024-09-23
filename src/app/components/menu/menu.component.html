@@ -1,0 +1,8 @@
+<p>Soy el mensaje del menu.component.html</p>
+<ul class="list-group">
+    <li *ngFor="let ruta of rutas">
+        <a [routerLink]="ruta.path" class="list-group-item">{{ruta.name}}</a>
+    </li>
+    <!-- <li *ngFor="let ruta of rutas"><a routerLink="{{ruta.path}}" class="list-group-item">{{ruta.name}}</a></li>
+    <li *ngFor="let ruta of rutas"><a routerLink="{{ruta.path}}" class="list-group-item" >{{ruta.name}}</a></li> -->
+</ul>
