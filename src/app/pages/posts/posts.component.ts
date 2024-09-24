@@ -17,38 +17,42 @@ import { PostComponent } from "./post/post.component"; // Importa función 'of' 
 export class PostsComponent implements OnInit {
 
 
-  mensajes:any; // Propiedad para almacenar los posts, inicializada como array vacío //esto cambio respecto a la otra forma
+  mensajes: any; // Propiedad para almacenar los posts, inicializada como array vacío //esto cambio respecto a la otra forma
 
   // Constructor del componente, inyecta el servicio DataService
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) { }
 
   // Método ngOnInit, se ejecuta al inicializar el componente
   ngOnInit() {
     this.mensajes = this.dataService.getPost(); // mucho mas corto, se usa en el html |async
     //la desventaja es que en consola no veo lo que obtengo, cosa que antes si. Hay una solucion
   }
+
+  escuchaClick(id: number) {
+    console.log('Click en:', id)
+  }
 }
 
-  //ESTA FORMA DIFIERE EN EL USO DE MENSAJES Y PIPE
-  /* mensajes: any[] = []; // Propiedad para almacenar los posts, inicializada como array vacío //esto cambia
+//ESTA FORMA DIFIERE EN EL USO DE MENSAJES Y PIPE
+/* mensajes: any[] = []; // Propiedad para almacenar los posts, inicializada como array vacío //esto cambia
 
-  // Constructor del componente, inyecta el servicio DataService
-  constructor(private dataService: DataService) {}
+// Constructor del componente, inyecta el servicio DataService
+constructor(private dataService: DataService) {}
 
-  // Método ngOnInit, se ejecuta al inicializar el componente
-  ngOnInit() {
-    this.dataService.getPost().pipe( // Llama al método getPost del servicio y aplica operadores con pipe //esto cambia
-      catchError(error => { // Captura y maneja cualquier error que ocurra
-        console.error('Error fetching posts:', error); // Registra el error en la consola
-        return of([]); // Retorna un observable con un array vacío en caso de error
-      })   
-    ).subscribe( // Se suscribe al observable resultante
-      (posts: any) => { // Función que se ejecuta cuando se reciben los posts exitosamente
-        console.log(posts); // Registra los posts en la consola
-        this.mensajes = posts; // Asigna los posts recibidos a la propiedad posts del componente
-      }
-    );
-  }
+// Método ngOnInit, se ejecuta al inicializar el componente
+ngOnInit() {
+  this.dataService.getPost().pipe( // Llama al método getPost del servicio y aplica operadores con pipe //esto cambia
+    catchError(error => { // Captura y maneja cualquier error que ocurra
+      console.error('Error fetching posts:', error); // Registra el error en la consola
+      return of([]); // Retorna un observable con un array vacío en caso de error
+    })   
+  ).subscribe( // Se suscribe al observable resultante
+    (posts: any) => { // Función que se ejecuta cuando se reciben los posts exitosamente
+      console.log(posts); // Registra los posts en la consola
+      this.mensajes = posts; // Asigna los posts recibidos a la propiedad posts del componente
+    }
+  );
+}
 } */
 
 
