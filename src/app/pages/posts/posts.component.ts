@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core'; // Importa decorador Componen
 import { CommonModule } from '@angular/common'; // Importa CommonModule para directivas comunes de Angular
 import { DataService } from '../../services/data.service'; // Importa el servicio de datos personalizado
 import { catchError } from 'rxjs/operators'; // Importa operador catchError de RxJS para manejo de errores
-import { of } from 'rxjs'; // Importa función 'of' de RxJS para crear observables
+import { of } from 'rxjs';
+import { PostComponent } from "./post/post.component"; // Importa función 'of' de RxJS para crear observables
 
 // Decorador del componente
 @Component({
   selector: 'app-posts', // Selector del componente para uso en templates
   standalone: true, // Indica que es un componente standalone (nueva característica de Angular)
-  imports: [CommonModule], // Importa CommonModule para uso en el template
+  imports: [CommonModule, PostComponent], // Importa CommonModule para uso en el template
   templateUrl: './posts.component.html', // Ruta al archivo de template HTML
   styleUrl: './posts.component.css' // Ruta al archivo de estilos CSS
 })
